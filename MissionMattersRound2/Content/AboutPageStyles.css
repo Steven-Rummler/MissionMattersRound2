@@ -1,0 +1,36 @@
+﻿/*Our custom CSS Page*/
+
+
+
+body {
+    background-color: lightblue;
+}
+
+h3{
+    color: cornflowerblue;
+}
+
+img {
+    border-bottom: 2px thin white;
+}
+
+.jumbotron {
+    /*background: white;
+    color: white;*/
+    background-color: #f8f9fa;
+}
+
+.breadcrumb {
+    background: #f8f9fa;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.cornflower {
+    color: cornflowerblue;
+}

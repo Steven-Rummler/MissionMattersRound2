@@ -1,0 +1,43 @@
+﻿@model MissionMatters.Models.Contact
+
+@{
+    ViewBag.Title = "ContactForm";
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href=@Url.Action("Index", "Home")>Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Contact</li>
+    </ol>
+</nav>
+<div class="card">
+    <div class="card-body" style="background-color: #f8f9fa">
+        <p>Feel free to contact us at info@missionmatters.com or 801-555-5555. You can also fill out the form below with any questions</p>
+    </div>
+</div>
+<br/>
+<div class="jumbotron">
+    @using (Html.BeginForm())
+    {
+        <p>Name:<br /> @Html.TextBoxFor(model => model.Name)</p>
+        <p>Email: <br />@Html.TextBoxFor(model => model.Email)</p>
+
+
+
+        <p>
+            Subject:<br /> @Html.DropDownListFor(model => model.Subject, new[] {
+      new SelectListItem()
+      {Text = "How do I use this site?", Value = "Question about forum use"},
+      new SelectListItem()
+      {Text = "Comments about site", Value = "Comments" },
+      new SelectListItem()
+      { Text = "Other questions", Value = "Other"  } }, "Choose an option")
+        </p>
+
+
+
+        <p>Question or Comment:<br /> @Html.TextArea("Body", null, new { cols = "200", rows = "10" })</p>
+        <input type="submit" value="Submit" />
+    }
+</div>
+

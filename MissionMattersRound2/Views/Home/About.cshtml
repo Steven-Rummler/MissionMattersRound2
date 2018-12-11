@@ -1,7 +1,41 @@
 ﻿@{
     ViewBag.Title = "About";
 }
-<h2>@ViewBag.Title.</h2>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href=@Url.Action("Index", "Home")>Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">About</li>
+    </ol>
+</nav>
+
 <h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+<div class="jumbotron">
+    <div >
+        <h3>Get Involved in the Community</h3>
+
+        <p class="center"><a href="https://www.justserve.org/"><img src="~/Content/AboutPageImages/ChristPicture.jpeg" /></a></p>
+    </div>
+
+    <p>
+        Our mission here is to connect current and prospective missionaries to their assigned missions to better
+        prepare themselves to serve when they are called. We provide some general information about the mission
+        both in administrative aspects of the mission as well as climate and other useful information. We also
+        have a page that allows these missionaries to post questions to a question board, and past missionaries
+        who served in the same place may answer any questions you have about the mission, country, or people. We
+        hope you enjoy and it is useful in helping you prepare!
+    </p>
+</div>
+
+<div>
+    <h3>Missionary work</h3>
+
+    <p><a href="https://www.lds.org/youth/learn/mission-preparation?lang=eng"><img src="~/Content/AboutPageImages/MissionaryPic.jpeg" /></a></p>
+</div>
+
+<div>
+    <h3>Temple Work</h3>
+
+    <p><a href="https://www.mormon.org/beliefs/temples"><img src="~/Content/AboutPageImages/Temple.jpeg" /></a></p>
+</div>
+
