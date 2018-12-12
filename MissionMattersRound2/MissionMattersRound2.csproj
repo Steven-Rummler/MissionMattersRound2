@@ -238,7 +238,17 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Images\Thumbs.db" />
     <None Include="Properties\PublishProfiles\MissionMatters - Web Deploy.pubxml" />
+    <Content Include="Images\busan.jpg" />
+    <Content Include="Images\contact.png" />
+    <Content Include="Images\conversation.png" />
+    <Content Include="Images\korea.png" />
+    <Content Include="Images\list.png" />
+    <Content Include="Images\quebec.png" />
+    <Content Include="Images\quebeccarousel.jpg" />
+    <Content Include="Images\sanantonio.jpg" />
+    <Content Include="Images\texas.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
