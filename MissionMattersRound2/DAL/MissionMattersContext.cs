@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
-using AzureSample.Models;
+using MissionMattersRound2.Models;
+using MissionMattersRound2.DAL;
 
 namespace MissionMattersRound2.DAL
 {

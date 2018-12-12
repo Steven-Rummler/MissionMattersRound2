@@ -6,8 +6,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using AzureSample.Models;
-using AzureSample.DAL;
+using MissionMattersRound2.Models;
+using MissionMattersRound2.DAL;
 
 namespace MissionMattersRound2
 {
