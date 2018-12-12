@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -9,13 +11,15 @@ namespace MissionMattersRound2.Models
     public class Mission
     {
         [Key]
-        public int missionID;
-        public string missionName;
-        public string missionPresidentName;
-        public string missionAddress;
-        public string language;
-        public string climate;
-        public string dominantReligion;
-        public string flagSymbol;
+        public int missionID { get; set; }
+        public String missionName { get; set; }
+        public String missionPresidentName { get; set; }
+        public String missionAddress { get; set; }
+        public String language { get; set; }
+        public String climate { get; set; }
+        public String dominantReligion { get; set; }
+        public String flagSymbol { get; set; }
+
     }
 }
+
