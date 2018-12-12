@@ -9,10 +9,10 @@ namespace MissionMattersRound2.Models
     public class MissionQuestion
     {
         [Key]
-        int missionQuestionID;
-        int missionID;
-        int userID;
-        string question;
-        string answer;
+        public int missionQuestionID;
+        public int missionID;
+        public int userID;
+        public string question;
+        public string answer;
     }
 }
