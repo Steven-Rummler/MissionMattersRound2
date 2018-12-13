@@ -93,9 +93,9 @@ namespace MissionMattersRound2.Controllers
             {
                 db.Entry(missionQuestion).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Mission");
+                return RedirectToAction("Mission", "Home", missionQuestion.missionID);
             }
-            return View("Mission");
+            return View("Mission", "Home", missionQuestion.missionID);
         }
 
 
@@ -111,16 +111,16 @@ namespace MissionMattersRound2.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "missionID,missionName,missionPresidentName,missionAddress,language,climate,dominantReligion,flagSymbol")] Mission mission)
+        public ActionResult Create([Bind(Include = "missionQuestionID,missionID,userID,question,answer")] MissionQuestion missionQuestion)
         {
             if (ModelState.IsValid)
             {
-                db.Missions.Add(mission);
+                db.MissionQuestions.Add(missionQuestion);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Mission", "Home", missionQuestion.missionID);
             }
 
-            return View(mission);
+            return View("Mission", "Home", missionQuestion.missionID);
         }
     }
 }
