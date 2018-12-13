@@ -15,7 +15,7 @@
 <div class="jumbotron">
     <h2>@Html.DisplayFor(model => model.missionName)</h2>
 
-    <p>The @Html.DisplayFor(model => model.missionName) is at @Html.DisplayFor(model => model.missionAddress).</p>
+    <p>The @Html.DisplayFor(model => model.missionName) mission office address is at @Html.DisplayFor(model => model.missionAddress).</p>
 
     <p>The current Mission President is President @Html.DisplayFor(model => model.missionPresidentName).</p>
 
@@ -25,7 +25,7 @@
 
     <p>The dominant religion is @Html.DisplayFor(model => model.dominantReligion).</p>
 
-    <img src="@Html.DisplayFor(model => model.flagSymbol)" width="600" alt="Mission Flag" />
+    <img class="center" src="@Html.DisplayFor(model => model.flagSymbol)" width="600" alt="Mission Flag" />
 
 </div>
 
