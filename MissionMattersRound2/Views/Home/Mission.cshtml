@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MissionMatters.Models.Question>
+﻿@model MissionMattersRound2.Models.Mission
 
 @{
     ViewBag.Title = "Mission";
@@ -13,9 +13,9 @@
 </nav>
 
 <div class="jumbotron">
-    <h2>@ViewBag.name</h2>
-
-    <p>The @ViewBag.name is at @ViewBag.address.</p>
+    <h2>@Html.DisplayNameFor(model => model.missionName)</h2>
+</div>
+    @*<p>The @ViewBag.name is at @ViewBag.address.</p>
 
     <p>The current Mission President is President @ViewBag.president.</p>
 
@@ -101,7 +101,7 @@
 
 
     </table>
-</div>
+</div>*@
 @*
     <div class="jumbotron">
         <table class="table">
@@ -141,7 +141,7 @@
 
         </table>
     </div>*@
-<form action=@Url.Action(ViewBag.Name, "Home") method="get">
+@*<form action=@Url.Action(ViewBag.Name, "Home") method="get">
     Question:<br />
     <input type="text" name="question" value=""><br />
     <input type="submit" value="Submit">
@@ -163,4 +163,4 @@
     function showForm3() {
         document.getElementById('form3').style.display = 'block';
     }
-</script>
+</script>*@
