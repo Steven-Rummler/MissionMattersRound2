@@ -49,13 +49,13 @@
                 </td>
                 <td>
                     @if (item.answer != null)
-                        {
-                            @Html.DisplayFor(model => item.answer)
-                        }
-                        else
-                        {
-                            @Html.ActionLink("Answer", "Edit", "Home", new { id = item.missionQuestionID })
-                        }
+                    {
+                        @Html.DisplayFor(model => item.answer)
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Answer", "Edit", "Home" , new { id = item.missionQuestionID }, new { })
+                    }
                 </td>
             </tr>
          }
