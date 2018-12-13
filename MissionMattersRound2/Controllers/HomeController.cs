@@ -11,7 +11,7 @@ using MissionMattersRound2.Models;
 
 namespace MissionMattersRound2.Controllers
 {
-    [RequireHttps]
+    //[RequireHttps]
     public class HomeController : Controller
     {
         //VARIABLES
