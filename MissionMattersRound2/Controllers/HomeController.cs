@@ -41,7 +41,8 @@ namespace MissionMattersRound2.Controllers
             return View(db.Missions.ToList());
         }
 
-        public ActionResult Mission(int? id)
+        [Authorize]
+            public ActionResult Mission(int? id)
         {
             if (id == null)
             {
