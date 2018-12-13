@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MissionMatters.Models.Question>
+﻿@model MissionMattersRound2.Models.Mission
 
 @{
     ViewBag.Title = "Mission";
@@ -8,24 +8,24 @@
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href=@Url.Action("Index", "Home")>Home</a></li>
         <li class="breadcrumb-item"><a href=@Url.Action("Missions", "Home")>Missions</a></li>
-        <li class="breadcrumb-item active" aria-current="page">@ViewBag.Name</li>
+        <li class="breadcrumb-item active" aria-current="page">@Html.DisplayFor(model => model.missionName)</li>
     </ol>
 </nav>
 
 <div class="jumbotron">
-    <h2>@ViewBag.name</h2>
+    <h2>@Html.DisplayFor(model => model.missionName)</h2>
 
-    <p>The @ViewBag.name is at @ViewBag.address.</p>
+    <p>The @Html.DisplayFor(model => model.missionName) mission office address is at @Html.DisplayFor(model => model.missionAddress).</p>
 
-    <p>The current Mission President is President @ViewBag.president.</p>
+    <p>The current Mission President is President @Html.DisplayFor(model => model.missionPresidentName).</p>
 
-    <p>The mission language is @ViewBag.language.</p>
+    <p>The mission language is @Html.DisplayFor(model => model.language).</p>
 
-    <p>The climate is @ViewBag.climate.</p>
+    <p>The climate is @Html.DisplayFor(model => model.climate).</p>
 
-    <p>The dominant religion is @ViewBag.dominate.</p>
+    <p>The dominant religion is @Html.DisplayFor(model => model.dominantReligion).</p>
 
-    <img src=@ViewBag.flag width="600" alt="Mission Flag" />
+    <img class="center" src="@Html.DisplayFor(model => model.flagSymbol)" width="600" alt="Mission Flag" />
 
 </div>
 
@@ -38,129 +38,31 @@
             <th>
                 Answer
             </th>
-            <th></th>
         </tr>
 
 
-        <tr>
-            <td>How many missions are there?</td>
-            <td>
-                419
-            </td>
-            <td>
-                <button onclick="showForm1()">Answer</button>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <form style="display:none" id="form1" action=@Url.Action(ViewBag.Name, "Home") method="get">
-                    Answer:<br />
-                    <input type="text" name="answer" value=""><br />
-                    <input type="submit" value="Submit">
-                </form>
-            </td>
-        </tr>
-
-        <tr>
-            <td>How many missionaries are there?</td>
-            <td>
-                65,000
-            </td>
-            <td>
-                <button onclick="showForm2()">Answer</button>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <form style="display:none" id="form2" action=@Url.Action(ViewBag.Name, "Home") method="get">
-                    Answer:<br />
-                    <input type="text" name="answer" value=""><br />
-                    <input type="submit" value="Submit">
-                </form>
-            </td>
-        </tr>
-
-        <tr>
-            <td>Can I bring my phone on my mission?</td>
-            <td>
-                Maybe
-            </td>
-            <td>
-                <button onclick="showForm3()">Answer</button>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <form style="display:none" id="form3" action=@Url.Action(ViewBag.Name, "Home") method="get">
-                    Answer:<br />
-                    <input type="text" name="answer" value=""><br />
-                    <input type="submit" value="Submit">
-                </form>
-            </td>
-        </tr>
-
+        @foreach (var item in Model.missionQuestions.ToList())
+         {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item.question)
+                </td>
+                <td>
+                    @if (item.answer != null)
+                    {
+                        @Html.DisplayFor(model => item.answer)
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Answer", "Edit", "Home" , new { id = item.missionQuestionID }, new { })
+                    }
+                </td>
+            </tr>
+         }
 
     </table>
 </div>
-@*
-    <div class="jumbotron">
-        <table class="table">
-            <tr>
-                <th>
-                    Question
-                </th>
-                <th>
-                    Answer
-                </th>
-                <th></th>
-            </tr>
 
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @item.QuestionText
-                    </td>
-                    <td>
-                        @item.Answer
-                    </td>
-                    <td>
-                        <button onclick="showForm()">Answer</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <form style="display:none" id="form" action=@Url.Action(ViewBag.Name, "Home") method="get">
-                            Answer:<br />
-                            <input type="text" name="answer" value=""><br />
-                            <input type="submit" value="Submit">
-                        </form>
-                    </td>
-                </tr>
-            }
 
-        </table>
-    </div>*@
-<form action=@Url.Action(ViewBag.Name, "Home") method="get">
-    Question:<br />
-    <input type="text" name="question" value=""><br />
-    <input type="submit" value="Submit">
-</form>
 
-<script>
-    function showForm1() {
-        document.getElementById('form1').style.display = 'block';
-    }
-</script>
-
-<script>
-    function showForm2() {
-        document.getElementById('form2').style.display = 'block';
-    }
-</script>
-
-<script>
-    function showForm3() {
-        document.getElementById('form3').style.display = 'block';
-    }
-</script>
+@Html.ActionLink("New Question", "Create", "Missions")
