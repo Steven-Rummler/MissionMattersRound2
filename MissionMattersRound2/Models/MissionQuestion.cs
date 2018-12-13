@@ -11,10 +11,13 @@ namespace MissionMattersRound2.Models
     public class MissionQuestion
     {
         [Key]
-        public int missionQuestionID;
-        public int missionID;
-        public int userID;
-        public string question;
-        public string answer;
+        public int missionQuestionID { get; set; }
+        public int userID { get; set; }
+        public string question { get; set; }
+        public string answer { get; set; }
+
+        //foreign key linking to mission model
+        public int? missionID { get; set; }
+        public virtual Mission mission { get; set; }
     }
 }

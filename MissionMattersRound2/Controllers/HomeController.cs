@@ -1,19 +1,25 @@
-﻿using MissionMattersRound2.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using MissionMattersRound2.DAL;
+using MissionMattersRound2.Models;
 
 namespace MissionMattersRound2.Controllers
 {
     public class HomeController : Controller
     {
+        //VARIABLES
         public static List<Question> Korea = new List<Question>();
-
         public static List<Question> Canada = new List<Question>();
-
         public static List<Question> Texas = new List<Question>();
+        private MissionMattersContext db = new MissionMattersContext();
+
+
 
         public ActionResult Index()
         {
@@ -31,43 +37,21 @@ namespace MissionMattersRound2.Controllers
 
         public ActionResult Missions()
         {
-            return View();
+            return View(db.Missions.ToList());
         }
 
-        public ActionResult Seoul()
+        public ActionResult Mission(int? id)
         {
-            ViewBag.name = "Seoul Korea South Mission";
-            ViewBag.president = "Roger W. Turner";
-            ViewBag.address = "29 Wiryeseong-daero 22-gil (Ogeum - dong) Songpa - gu Seoul - teukbyeolsi 05655 South Korea";
-            ViewBag.language = "Korean";
-            ViewBag.climate = "Subtropical";
-            ViewBag.dominate = "Atheist";
-            ViewBag.flag = "/Content/Images/korea.png";
-            return View("Mission", Korea);
-        }
-
-        public ActionResult Montreal()
-        {
-            ViewBag.name = "Canada Montreal Mission";
-            ViewBag.president = "Robert Lee Phillips";
-            ViewBag.address = "470 Rue Gilford, Montréal, QC H2J 1N3, Canada";
-            ViewBag.language = "French";
-            ViewBag.climate = "Continental";
-            ViewBag.dominate = "Catholic";
-            ViewBag.flag = "/Content/Images/quebec.png";
-            return View("Mission", Canada);
-        }
-
-        public ActionResult Lubbock()
-        {
-            ViewBag.name = "Texas Lubbock Mission";
-            ViewBag.president = "David G. Hales";
-            ViewBag.address = "6310 114th St, Lubbock, Texas";
-            ViewBag.language = "Spanish/English";
-            ViewBag.climate = "Semi-arid";
-            ViewBag.dominate = "Baptist";
-            ViewBag.flag = "/Content/Images/texas.png";
-            return View("Mission", Texas);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Mission mission = db.Missions.Find(id);
+            if (mission == null)
+            {
+                return HttpNotFound();
+            }
+            return View(mission);
         }
 
         public ActionResult About()
@@ -77,13 +61,66 @@ namespace MissionMattersRound2.Controllers
             return View();
         }
 
-
-
         public ActionResult ContactForm()
         {
            
 
             return View();
+        }
+
+
+        //METHOD TO ANSWER QUESTIONS IN Q/A FORM
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            MissionQuestion missionQuestion = db.MissionQuestions.Find(id);
+            if (missionQuestion == null)
+            {
+                return HttpNotFound();
+            }
+            return View(missionQuestion);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "missionQuestionID,missionID,userID,question,answer")] MissionQuestion missionQuestion)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(missionQuestion).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Mission");
+            }
+            return View("Mission");
+        }
+
+
+        //CREATE FORM
+        // GET: Missions/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Missions/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "missionID,missionName,missionPresidentName,missionAddress,language,climate,dominantReligion,flagSymbol")] Mission mission)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Missions.Add(mission);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(mission);
         }
     }
 }
