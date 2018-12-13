@@ -58,11 +58,11 @@ namespace MissionMattersRound2
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "259363251704-ojih43d5215qgglcalms2jgbk2jatp3o.apps.googleusercontent.com",
+                ClientSecret = "ybIHn08tKxOQcH4Jhc4qeZEV"
+            });
         }
     }
 }
