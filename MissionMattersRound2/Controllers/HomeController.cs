@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace MissionMattersRound2.Controllers
 {
+    [RequireHttps]
     public class HomeController : Controller
     {
         public static List<Question> Korea = new List<Question>();
