@@ -20,6 +20,8 @@ namespace MissionMattersRound2.Models
         public String dominantReligion { get; set; }
         public String flagSymbol { get; set; }
 
+        //LINK TO MISSION QUESTIONS TABLE
+        public virtual ICollection<MissionQuestion> missionQuestions { get; set; }
     }
 }
 

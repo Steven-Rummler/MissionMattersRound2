@@ -1,4 +1,6 @@
-﻿
+﻿@model IEnumerable<MissionMattersRound2.Models.Mission>
+
+
 @{
     ViewBag.Title = "Missions";
 }
@@ -14,9 +16,10 @@
 
 <select id="list">
     <option value="">Pick a mission!</option>
-    <option value=@Url.Action("Montreal", "Home")>Montreal Canada Mission</option>
-    <option value=@Url.Action("Seoul", "Home")>Seoul Korea South Mission</option>
-    <option value=@Url.Action("Lubbock", "Home")>Texas Lubbock Mission</option>
+    @foreach (var item in Model)
+    {
+    <option value="@Url.Action("Mission", "Home", new { id = item.missionID })">@Html.DisplayFor(modelItem => item.missionName)</option>
+    }
 </select>
 
 <script>
