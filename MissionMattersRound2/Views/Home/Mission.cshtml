@@ -27,43 +27,7 @@
 
     <img class="center" src="@Html.DisplayFor(model => model.flagSymbol)" width="600" alt="Mission Flag" />
 
-</div>
-
-<div class="jumbotron">
-    <table class="table">
-        <tr>
-            <th>
-                Question
-            </th>
-            <th>
-                Answer
-            </th>
-        </tr>
-
-
-        @foreach (var item in Model.missionQuestions.ToList())
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(model => item.question)
-                </td>
-                <td>
-                    @if (item.answer != null)
-                    {
-                        @Html.DisplayFor(model => item.answer)
-                    }
-                    else
-                    {
-                        @Html.ActionLink("Answer", "Edit", "Home", new { id = item.missionQuestionID }, new { })
-                    }
-                </td>
-
-            </tr>
-        }
-
-    </table>
+    @Html.ActionLink("View Mission FAQs", "FAQs", new { id = Model.missionID })
 
 </div>
-@Html.ActionLink("New Question", "Create", "Home", new { id = Model.missionID@*, uID = Model.userID*@ }, new { })
-
 
