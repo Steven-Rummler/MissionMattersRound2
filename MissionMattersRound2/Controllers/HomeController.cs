@@ -109,10 +109,9 @@ namespace MissionMattersRound2.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(missionQuestion).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Mission", new { id = missionQuestion.missionID });
+                db.SaveChanges();               
             }
-            return View("Mission");
+            return RedirectToAction("FAQ", new { id = missionQuestion.missionID });
         }
 
 
