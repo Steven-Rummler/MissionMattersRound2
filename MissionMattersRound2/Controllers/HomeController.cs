@@ -11,6 +11,7 @@ using MissionMattersRound2.Models;
 
 namespace MissionMattersRound2.Controllers
 {
+    [RequireHttps]
     public class HomeController : Controller
     {
         //VARIABLES
@@ -35,6 +36,7 @@ namespace MissionMattersRound2.Controllers
             return View();
         }
 
+        [Authorize]
         public ActionResult Missions()
         {
             return View(db.Missions.ToList());
