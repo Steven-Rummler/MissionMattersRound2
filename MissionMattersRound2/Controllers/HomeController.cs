@@ -99,28 +99,31 @@ namespace MissionMattersRound2.Controllers
         }
 
 
-        //CREATE FORM
-        // GET: Missions/Create
-        public ActionResult Create()
+        // GET: MissionQuestions/Create
+        public ActionResult Create(int? id)
         {
+
+            ViewBag.missionID = id;
             return View();
         }
 
-        // POST: Missions/Create
+        // POST: MissionQuestions/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "missionID,missionName,missionPresidentName,missionAddress,language,climate,dominantReligion,flagSymbol")] Mission mission)
+        public ActionResult Create([Bind(Include = "missionQuestionID,userID,question,answer,missionID")] MissionQuestion missionQuestion, int? id)
         {
             if (ModelState.IsValid)
             {
-                db.Missions.Add(mission);
+                missionQuestion.missionID = id;
+                db.MissionQuestions.Add(missionQuestion);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(mission);
+            ViewBag.missionID = new SelectList(db.Missions, "missionID", "missionName", missionQuestion.missionID);
+            return View(missionQuestion);
         }
     }
 }

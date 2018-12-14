@@ -203,6 +203,7 @@
     <Compile Include="Controllers\DefaultHomeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MissionQuestionsController.cs" />
     <Compile Include="Controllers\MissionsController.cs" />
     <Compile Include="DAL\MissionMattersContext.cs" />
     <Compile Include="Global.asax.cs">
@@ -341,6 +342,11 @@
     <Content Include="Views\Missions\Edit.cshtml" />
     <Content Include="Views\Missions\Index.cshtml" />
     <Content Include="Views\Home\Edit.cshtml" />
+    <Content Include="Views\MissionQuestions\Create.cshtml" />
+    <Content Include="Views\MissionQuestions\Delete.cshtml" />
+    <Content Include="Views\MissionQuestions\Details.cshtml" />
+    <Content Include="Views\MissionQuestions\Edit.cshtml" />
+    <Content Include="Views\MissionQuestions\Index.cshtml" />
     <Content Include="Views\Home\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>

@@ -42,7 +42,7 @@
 
 
         @foreach (var item in Model.missionQuestions.ToList())
-         {
+        {
             <tr>
                 <td>
                     @Html.DisplayFor(model => item.question)
@@ -54,15 +54,16 @@
                     }
                     else
                     {
-                        @Html.ActionLink("Answer", "Edit", "Home" , new { id = item.missionQuestionID }, new { })
+                        @Html.ActionLink("Answer", "Edit", "Home", new { id = item.missionQuestionID }, new { })
                     }
                 </td>
+
             </tr>
-         }
+        }
 
     </table>
+
 </div>
+@Html.ActionLink("New Question", "Create", "Home", new { id = Model.missionID@*, uID = Model.userID*@ }, new { })
 
 
-
-@Html.ActionLink("New Question", "Create", "Missions")
