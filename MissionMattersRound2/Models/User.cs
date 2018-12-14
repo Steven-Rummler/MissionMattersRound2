@@ -11,10 +11,10 @@ namespace MissionMattersRound2.Models
     public class User
     {
         [Key]
-        public int userID;
-        public string userEmail;
-        public string password;
-        public string firstName;
-        public string lastName;
+        public int userID { get; set; }
+        public string userEmail { get; set; }
+        public string password { get; set; }
+        public string firstName { get; set; }
+        public string lastName { get; set; }
     }
 }
