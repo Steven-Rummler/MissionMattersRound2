@@ -36,7 +36,7 @@ namespace MissionMattersRound2.Controllers
             return View();
         }
 
-        [Authorize]
+        
         public ActionResult Missions()
         {
             return View(db.Missions.ToList());
