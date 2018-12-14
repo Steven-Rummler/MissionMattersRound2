@@ -135,7 +135,7 @@ namespace MissionMattersRound2.Controllers
                 missionQuestion.missionID = id;
                 db.MissionQuestions.Add(missionQuestion);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("FAQs", new { id = missionQuestion.missionID });
             }
 
             ViewBag.missionID = new SelectList(db.Missions, "missionID", "missionName", missionQuestion.missionID);

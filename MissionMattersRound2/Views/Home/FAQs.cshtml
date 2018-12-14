@@ -1,5 +1,13 @@
 ﻿@model MissionMattersRound2.Models.Mission
 
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href=@Url.Action("Index", "Home")>Home</a></li>
+        <li class="breadcrumb-item"><a href=@Url.Action("Missions", "Home")>Missions</a></li>
+        <li class="breadcrumb-item" ><a href=@Url.Action("Mission", "Home", new { id = Model.missionID })>@Html.DisplayFor(model => model.missionName)</a></li>
+        <li class="breadcrumb-item active" aria-current="page">FAQs</li>
+    </ol>
+</nav>
 
 <div class="jumbotron">
     <table class="table">
@@ -19,16 +27,16 @@
             <tr>
                 <td>
                     @Html.DisplayFor(model => item.question)
-                    
-                    
+
+
                 </td>
                 <td>
                     @if (item.answer != null)
                     {
                         @Html.DisplayFor(model => item.answer)
                     }
- 
-                    
+
+
                 </td>
                 <td>
                     @if (item.answer != null)
@@ -46,5 +54,8 @@
 
     </table>
 
+    <br />
+
+    @Html.ActionLink("New Question", "Create", "Home", new { id = Model.missionID@*, uID = Model.userID*@}, new { })
+
 </div>
-@Html.ActionLink("New Question", "Create", "Home", new { id = Model.missionID@*, uID = Model.userID*@}, new { })
