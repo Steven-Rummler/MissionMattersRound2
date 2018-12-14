@@ -362,6 +362,7 @@
     <Content Include="Views\MissionQuestions\Index.cshtml" />
     <Content Include="Views\Home\Create.cshtml" />
     <Content Include="Views\Shared\Default_Layout.cshtml" />
+    <Content Include="Views\Home\FAQs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

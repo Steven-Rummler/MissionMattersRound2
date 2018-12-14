@@ -54,6 +54,21 @@ namespace MissionMattersRound2.Controllers
             return View(mission);
         }
 
+        [Authorize]
+        public ActionResult FAQs(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Mission mission = db.Missions.Find(id);
+            if (mission == null)
+            {
+                return HttpNotFound();
+            }
+            return View(mission);
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "About us!";
@@ -93,7 +108,7 @@ namespace MissionMattersRound2.Controllers
             {
                 db.Entry(missionQuestion).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Mission");
+                return RedirectToAction("Mission", new { id = missionQuestion.missionID });
             }
             return View("Mission");
         }

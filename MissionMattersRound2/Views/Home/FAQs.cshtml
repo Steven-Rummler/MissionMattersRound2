@@ -1,0 +1,50 @@
+﻿@model MissionMattersRound2.Models.Mission
+
+
+<div class="jumbotron">
+    <table class="table">
+        <tr>
+            <th>
+                Question
+            </th>
+            <th>
+                Answer
+            </th>
+            <th></th>
+        </tr>
+
+
+        @foreach (var item in Model.missionQuestions.ToList())
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item.question)
+                    
+                    
+                </td>
+                <td>
+                    @if (item.answer != null)
+                    {
+                        @Html.DisplayFor(model => item.answer)
+                    }
+ 
+                    
+                </td>
+                <td>
+                    @if (item.answer != null)
+                    {
+                        @Html.ActionLink("Edit Answer", "Edit", "Home", new { id = item.missionQuestionID }, new { })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Answer", "Edit", "Home", new { id = item.missionQuestionID }, new { })
+                    }
+                </td>
+
+            </tr>
+        }
+
+    </table>
+
+</div>
+@Html.ActionLink("New Question", "Create", "Home", new { id = Model.missionID@*, uID = Model.userID*@}, new { })

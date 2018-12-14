@@ -16,6 +16,7 @@
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.missionID)
+    @Html.HiddenFor(model => model.missionQuestionID)
 
     <div class="form-group">
         Question:
@@ -23,7 +24,8 @@
             @Html.DisplayFor(model => model.question)
         </div>
     </div>
-
+    @Html.HiddenFor(model => model.mission)
+    @Html.HiddenFor(model => model.question)
     <div class="form-group">
         Answer:
         <div class="col-md-10">
